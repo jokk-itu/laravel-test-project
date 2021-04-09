@@ -15,7 +15,3 @@ Uses a MySQL database with randomly generated instruments, statuses for instrume
 <p>Fire up the migrate command: <code>php artisan migrate:fresh --seed</code></p>
 
 <p>Then fire up the application: <code>php artisan serve</code></p>
-<<<<<<< HEAD
-
-=======
->>>>>>> 527af30326a708cb60788212b63af2869d6ece94
