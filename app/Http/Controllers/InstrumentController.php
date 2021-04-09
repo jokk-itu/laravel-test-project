@@ -33,8 +33,8 @@ class InstrumentController extends Controller
 
     public function store(Request $request)
     {
-        $instrument = $request->getContent();
-
+        $instrument = $request->post();
+        print_r($instrument);
         DB::table('instruments')->insert([
             'name' => $instrument['name']
         ]);
