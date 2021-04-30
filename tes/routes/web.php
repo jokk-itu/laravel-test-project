@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\InstrumentController;
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InstrumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('instrument/{name}', [InstrumentController::class, 'show'])
     ->where('name', '[\D]+');
 
 Route::post('instrument/create', [InstrumentController::class, 'store']);
+
+Route::put('instrument/{id}', [InstrumentController::class, 'update'])
+    ->where('id', '[\d]+');

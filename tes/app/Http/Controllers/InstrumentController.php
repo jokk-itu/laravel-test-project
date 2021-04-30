@@ -12,11 +12,11 @@ class InstrumentController extends Controller
 
     public function index(Request $request)
     {
-        $instrument = DB::table('instruments')
+        $instruments = DB::table('instruments')
             ->get();
 
         return view('instruments', [
-            'instrument' => $instrument ?? 'No instrument exists',
+            'instrument' => $instruments ?? 'No instrument exists',
         ]);
     }
 
@@ -33,14 +33,33 @@ class InstrumentController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|unique:instruments'
+        ]);
+
         $instrument = $request->post();
-        print_r($instrument);
         DB::table('instruments')->insert([
             'name' => $instrument['name']
         ]);
 
-        return response(200);
+        return response($instrument,201);
     }
 
-
+    public function update(Request $request, int $id)
+    {
+        $validated = $request->validate([
+            'name' => 'required|unique:instruments'
+        ]);
+        $instrument = Db::table('instruments')
+            ->where('id'. $id)
+            ->get();
+        if(!set($instrument))
+        {
+            response('Instrument could not be found by the given id: ' . $id, 404);
+        }
+        Db::table('instruments')
+            ->where('id', $id)
+            ->update(['name' => $instrument['name']]);
+        return response($instrument);
+    }
 }
