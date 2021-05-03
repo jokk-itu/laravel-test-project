@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             InstrumentSeeder::class,
             LocationSeeder::class,
-            StatusSeeder::class
+            StatusSeeder::class,
+            InstrumentsLocations::class,
+            InstrumentsStatus::class
         ]);
     }
 }

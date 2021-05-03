@@ -2,10 +2,13 @@ function postNewInstrument(event)
 {
     event.preventDefault();
     const data = $('#instrument-form').serialize();
+    console.log('Data sent: ' + data);
     $.post('/instrument/create', data, () => {
         console.log('success');
-    }).fail(() => {
-        console.log('failed')
+    }).fail((XMLHttpRequest, textStatus, errorThrown) => {
+        console.log(XMLHttpRequest.responseText);
+        console.log(textStatus);
+        console.log(errorThrown);
     });
 }
 

@@ -49,7 +49,7 @@ class InstrumentsTest extends TestCase
     public function test_update_valid_id_and_valid_name()
     {
         Instrument::factory()->create();
-        $response = $this->put('instrument/0', ['name' => 'valid']);
+        $response = $this->put('instrument/1', ['name' => 'valid']);
         $response->assertStatus(500);
     }
 
